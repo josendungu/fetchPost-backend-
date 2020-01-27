@@ -24,7 +24,7 @@ class User {
     public function update($fields = array(), $id = null) {
 
         if(!$id) {
-            $id = $this->data()->memebr_id;
+            $id = $this->data()->member_id;
         }
 
         if(!$this->_db->update('members', $id, $fields)) {
@@ -43,6 +43,15 @@ class User {
             }
         }
         return false;
+    }
+
+    public function findByElement($element, $value){
+        $data = $this->_db->get('members', array($element, '=', $user));
+
+        if($data->count()){
+            $this->_data = $data->first();
+            return true;
+        }
     }
 
     public function passMatch($pass){

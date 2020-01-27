@@ -11,19 +11,15 @@ if(Input::exists()) {
     $user = new User();
 
     $member = $user->find($username);
-    $userPassHash = Hash::make($password, $user->data()->salt);
-    $dbPassHash = $user->data()->password;
     
-
-  
     if($member){
-        if( $userPassHash === $dbPassHash){
-            echo $user->data()->password;
+        if($user->passMatch($password)){
+            echo '1';
         } else {
-            echo 'dont';
+            echo '3';
         }
     } else {
-        echo 'member doesnt exist';
+        echo '2';
     }
 }else{
     echo 'no-params';

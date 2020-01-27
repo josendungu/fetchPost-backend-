@@ -24,7 +24,7 @@ if(Input::exists()){
 
     try{
         $user->create($data);
-        echo true;
+        echo "1";
     } catch(Exception $e) {
         echo $e;
     }

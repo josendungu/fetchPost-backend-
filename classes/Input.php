@@ -27,4 +27,14 @@ class Input {
 
         return '';
     }
+
+    public static function itemExists($item) {
+        if(isset($_POST[$item])) {
+            return true;
+        } else if(isset($_GET[$item])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

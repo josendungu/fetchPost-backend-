@@ -9,18 +9,20 @@ if(Input::exists()){
     $user = new User();
 
     $member = $user->find($username);
-    $userPassHash = Hash::make($password, $user->data()->salt);
-    $mem_id = $user->data()->member_id;
 
 
     if($member){
+        echo $user->data()->member_id;
         try{
+            $salt = Hash::salt(32);
             $user->update(array(
-                'password' => $userPassHash
+                'password' => Hash::make($password, $salt),
+                'salt' => $salt
             ));
             echo '1';
         } catch(Exception $e) {
             die($e->getMessage());
+            
         }
 
     }else{

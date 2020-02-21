@@ -18,7 +18,7 @@ class User {
         }
     }
 
-    
+     
     
 
     public function update($fields = array(), $id = null) {
@@ -46,7 +46,7 @@ class User {
     }
 
     public function findByElement($element, $value){
-        $data = $this->_db->get('members', array($element, '=', $user));
+        $data = $this->_db->get('members', array($element, '=', $value));
 
         if($data->count()){
             $this->_data = $data->first();

@@ -12,13 +12,12 @@ if(Input::exists()){
 
 
     if($member){
-        echo $user->data()->member_id;
         try{
             $salt = Hash::salt(32);
             $user->update(array(
                 'password' => Hash::make($password, $salt),
                 'salt' => $salt
-            ));
+            ),$user->data()->member_id);
             echo '1';
         } catch(Exception $e) {
             die($e->getMessage());

@@ -41,6 +41,18 @@ class DB{
         return false;
     }
 
+
+    public function updatePass($table, $id, $pass) {
+
+        $sql = "UPDATE {$table} SET password = ? WHERE id = {$id}";
+
+        if(!$this->query($sql, $fields)->error()) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function update($table, $id, $fields) {
         $set = '';
         $x = 1;
@@ -53,7 +65,7 @@ class DB{
             $x++;
         }
 
-        $sql = "UPDATE {$table} SET {$set} WHERE id = {$id}";
+        $sql = "UPDATE {$table} SET {$set} WHERE member_id = {$id}";
 
         if(!$this->query($sql, $fields)->error()) {
             return true;

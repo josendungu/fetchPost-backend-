@@ -1,4 +1,5 @@
 <?php
+require_once 'core/init.php';
 if(Input::exists()){
     
     if(Input::itemExists("username")){
@@ -7,21 +8,11 @@ if(Input::exists()){
         if($user->find($username)){
             echo "1";
         } else {
-            echo "doesnt"
+            echo "doesnt";
         }
 
     }
-
-    if(Input::itemExists("phone")){
-        $phone = Input::get('phone');
-        $user = new User();
-        if($user->findByElement("phone",$phone)){
-            echo "1";
-        } else {
-            echo "doesnt"
-        }
-        
-    }
+  
 
     if(Input::itemExists("email")){
         $email = Input::get('email');
@@ -29,7 +20,7 @@ if(Input::exists()){
         if($user->findByElement("email",$email)){
             echo "1";
         } else {
-            echo "doesnt"
+            echo "doesnt";
         }
         
     }

@@ -32,6 +32,21 @@ class User {
         }
     }
 
+    public function getAll(){
+
+        $myObj = array(
+            "fname"=> $this->data()->fname, 
+            "lname"=>$this->data()->lname, 
+            "username"=>$this->data()->username, 
+            "phone"=>$this->data()->phone,
+            "email"=>$this->data()->email
+        );
+
+        $myJSON = json_encode($myObj);
+        return $myJSON;
+    
+    }
+
     public function find($user = null) {
         if($user) {
             $field = (is_numeric($user)) ? 'id' : 'username';

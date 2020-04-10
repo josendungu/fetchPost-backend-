@@ -74,6 +74,25 @@ class DB{
         return false;
     }
 
+    public function queryFetchAll($sql){
+        $this->_error = false;
+
+        if($this->_query = $this->_pdo->prepare($sql)) {
+            if($this->_query->execute()) {
+                $this->_results = $this->_query->fetchAll(PDO::FETCH_ASSOC);
+                $this->_count = $this->_query->rowCount();
+                
+            } else {
+                $this->_error = true;
+            }
+
+        } else {
+            $this->_error = true;
+        }
+        return $this;
+
+    }
+
     public function query($sql, $params = array()) {
         $this->_error = false;
 
